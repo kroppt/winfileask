@@ -508,7 +508,7 @@ func NewTagOFNA(parentHWND unsafe.Pointer, title string, filter FileFilter, init
 func GetOpenFileName(parentHWND unsafe.Pointer, title string, filter FileFilter, initialDir string) (string, bool, error) {
 	var ofn *TagOFNA
 	var err error
-	flags := FileMustExist | HideReadOnly | PathMustExist
+	flags := FileMustExist | HideReadOnly | PathMustExist | NoChangeDir
 	if ofn, err = NewTagOFNA(parentHWND, title, filter, initialDir, flags); err != nil {
 		return "", false, err
 	}
@@ -528,7 +528,7 @@ func GetOpenFileName(parentHWND unsafe.Pointer, title string, filter FileFilter,
 func GetSaveFileName(parentHWND unsafe.Pointer, title string, filter FileFilter, initialDir string) (string, bool, error) {
 	var ofn *TagOFNA
 	var err error
-	flags := HideReadOnly | PathMustExist
+	flags := HideReadOnly | PathMustExist | NoChangeDir
 	if ofn, err = NewTagOFNA(parentHWND, title, filter, initialDir, flags); err != nil {
 		return "", false, err
 	}
